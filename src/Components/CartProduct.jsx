@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 
-const CartProduct = ({ data }) => {
-  const [amount, setAmount] = useState(data.quantity);
+const CartProduct = ({ data, removeProduct }) => {
+  const [amountOfProduct, setAmountOfProduct] = useState(data.quantity);
   const [price, setPrice] = useState(data.price * data.quantity);
 
   const increment = () => {
-    setAmount((prev) => prev + 1);
-    setPrice(amount * price);
+    let uAmount = amountOfProduct + 1;
+    setAmountOfProduct(uAmount);
+
+    setPrice(data.price * uAmount);
   };
 
   const decrement = () => {
-    setAmount((prev) => prev - 1);
+    let updatedAmount = amountOfProduct - 1;
+
+    setAmountOfProduct(updatedAmount);
+    setPrice(updatedAmount * data.price);
   };
   return (
     <div className="flex items-start">
@@ -55,7 +60,11 @@ const CartProduct = ({ data }) => {
                     className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0"
                     placeholder=""
                     readOnly
-                    value={amount > 0 ? amount : 0}
+                    value={
+                      amountOfProduct > 0
+                        ? amountOfProduct
+                        : removeProduct(data)
+                    }
                   />
                   <button
                     type="button"
@@ -120,6 +129,7 @@ const CartProduct = ({ data }) => {
 
                   <button
                     type="button"
+                    onClick={() => removeProduct(data)}
                     className="inline-flex items-center text-sm font-medium text-red-600 hover:underline"
                   >
                     <svg

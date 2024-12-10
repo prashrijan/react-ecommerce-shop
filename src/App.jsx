@@ -20,22 +20,32 @@ function App() {
     } else {
       cartItem.quantity++;
     }
-
     setCartList(tempCartList);
+  };
+
+  const removeProduct = (data) => {
+    setCartList(
+      cartList.filter((cartItem) => cartItem.productId !== data.productId)
+    );
   };
 
   return (
     <>
       <NavBar />
-      <Routes>
-        <Route
-          path="/"
-          element={<Home datas={datas} updateCart={updateCart} />}
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart datas={cartList} />} />
-      </Routes>
+      <div className="mt-28 px-10">
+        <Routes>
+          <Route
+            path="/"
+            element={<Home datas={datas} updateCart={updateCart} />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/cart"
+            element={<Cart datas={cartList} removeProduct={removeProduct} />}
+          />
+        </Routes>
+      </div>
     </>
   );
 }
