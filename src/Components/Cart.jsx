@@ -2,7 +2,7 @@ import CartProduct from "./CartProduct";
 
 const Cart = ({ datas, removeProduct }) => {
   return (
-    <div className="flex gap-6 flex-col">
+    <div className="flex gap-6 flex-col items-center ">
       {datas.length === 0 ? (
         <h2 className="text-xl font-bold text-center text-orange-500 mt-10">
           No items added in cart yet.

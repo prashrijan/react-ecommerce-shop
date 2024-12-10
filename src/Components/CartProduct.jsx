@@ -8,7 +8,7 @@ const CartProduct = ({ data, removeProduct }) => {
     let uAmount = amountOfProduct + 1;
     setAmountOfProduct(uAmount);
 
-    setPrice(data.price * uAmount);
+    setPrice((data.price * uAmount).toFixed(2));
   };
 
   const decrement = () => {
@@ -18,7 +18,7 @@ const CartProduct = ({ data, removeProduct }) => {
     setPrice(updatedAmount * data.price);
   };
   return (
-    <div className="flex items-start">
+    <div className="flex items-start w-full">
       <div className="mx-auto w-full flex-none max-w-4xl">
         <div className="space-y-6">
           <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6">

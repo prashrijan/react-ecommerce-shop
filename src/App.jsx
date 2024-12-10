@@ -1,9 +1,6 @@
 import "./App.css";
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-import Home from "./Components/Home";
-import NavBar from "./Components/NavBar";
-import Cart from "./Components/Cart";
+import { About, Contact, Home, NavBar, Cart } from "./Components/Index";
+
 import datas from "./Data/Data";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
